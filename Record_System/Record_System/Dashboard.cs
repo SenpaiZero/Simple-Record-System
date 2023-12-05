@@ -176,133 +176,165 @@ namespace Record_System
         }
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow editedRow = dataGridView2.Rows[e.RowIndex];
-                DataRowView rowView = editedRow.DataBoundItem as DataRowView;
-
-                if (rowView != null)
+                if (e.RowIndex >= 0)
                 {
-                    DataRow editedDataRow = rowView.Row;
+                    DataGridViewRow editedRow = dataGridView2.Rows[e.RowIndex];
+                    DataRowView rowView = editedRow.DataBoundItem as DataRowView;
 
-                    using (SqlConnection con = new SqlConnection(databaseHelper.conString))
+                    if (rowView != null)
                     {
-                        con.Open();
-                        string updateQuery = "UPDATE studentDocumentRequest SET Lrn = @Lrn, Name = @Name, Year = @Year, Section = @Section, Date = @Date, Time = @Time, DocumentType = @DocumentType, Details = @Details WHERE Lrn = @OriginalLrn";
+                        DataRow editedDataRow = rowView.Row;
 
-                        SqlCommand cmd = new SqlCommand(updateQuery, con);
-                        cmd.Parameters.AddWithValue("@Lrn", editedDataRow["LRN"]);
-                        cmd.Parameters.AddWithValue("@Name", editedDataRow["Name"]);
-                        cmd.Parameters.AddWithValue("@Year", editedDataRow["Year"]);
-                        cmd.Parameters.AddWithValue("@Section", editedDataRow["Section"]);
-                        cmd.Parameters.AddWithValue("@Date", editedDataRow["Date"]);
-                        cmd.Parameters.AddWithValue("@Time", editedDataRow["Time"]);
-                        cmd.Parameters.AddWithValue("@DocumentType", editedDataRow["DocumentType"]);
-                        cmd.Parameters.AddWithValue("@Details", editedDataRow["Details"]);
-                        cmd.Parameters.AddWithValue("@OriginalLrn", editedDataRow["LRN", DataRowVersion.Original]);
+                        using (SqlConnection con = new SqlConnection(databaseHelper.conString))
+                        {
+                            con.Open();
+                            string updateQuery = "UPDATE studentDocumentRequest SET Lrn = @Lrn, Name = @Name, Year = @Year, Section = @Section, Date = @Date, Time = @Time, DocumentType = @DocumentType, Details = @Details WHERE Lrn = @OriginalLrn";
 
-                        cmd.ExecuteNonQuery();
+                            SqlCommand cmd = new SqlCommand(updateQuery, con);
+                            cmd.Parameters.AddWithValue("@Lrn", editedDataRow["LRN"]);
+                            cmd.Parameters.AddWithValue("@Name", editedDataRow["Name"]);
+                            cmd.Parameters.AddWithValue("@Year", editedDataRow["Year"]);
+                            cmd.Parameters.AddWithValue("@Section", editedDataRow["Section"]);
+                            cmd.Parameters.AddWithValue("@Date", editedDataRow["Date"]);
+                            cmd.Parameters.AddWithValue("@Time", editedDataRow["Time"]);
+                            cmd.Parameters.AddWithValue("@DocumentType", editedDataRow["DocumentType"]);
+                            cmd.Parameters.AddWithValue("@Details", editedDataRow["Details"]);
+                            cmd.Parameters.AddWithValue("@OriginalLrn", editedDataRow["LRN", DataRowVersion.Original]);
 
-                        MessageBox.Show("Successfully edited a data.");
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Successfully edited a data.");
+                        }
                     }
                 }
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Something went wrong.");
             }
+            
         }
 
         private void dataGridView2_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this row?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes && e.Row.Index >= 0)
+            try
             {
-                DataGridViewRow deletedRow = dataGridView2.Rows[e.Row.Index];
-                DataRowView rowView = deletedRow.DataBoundItem as DataRowView;
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this row?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (rowView != null)
+                if (result == DialogResult.Yes && e.Row.Index >= 0)
                 {
-                    DataRow deletedDataRow = rowView.Row;
+                    DataGridViewRow deletedRow = dataGridView2.Rows[e.Row.Index];
+                    DataRowView rowView = deletedRow.DataBoundItem as DataRowView;
 
-                    using (SqlConnection con = new SqlConnection(databaseHelper.conString))
+                    if (rowView != null)
                     {
-                        con.Open();
-                        string deleteQuery = "DELETE FROM studentDocumentRequest WHERE Lrn = @Lrn";
+                        DataRow deletedDataRow = rowView.Row;
 
-                        SqlCommand cmd = new SqlCommand(deleteQuery, con);
-                        cmd.Parameters.AddWithValue("@Lrn", deletedDataRow["LRN"]);
+                        using (SqlConnection con = new SqlConnection(databaseHelper.conString))
+                        {
+                            con.Open();
+                            string deleteQuery = "DELETE FROM studentDocumentRequest WHERE Lrn = @Lrn";
 
-                        cmd.ExecuteNonQuery();
+                            SqlCommand cmd = new SqlCommand(deleteQuery, con);
+                            cmd.Parameters.AddWithValue("@Lrn", deletedDataRow["LRN"]);
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
+                else
+                {
+                    e.Cancel = true; // Cancel deletion if the user clicks 'No'
+                }
             }
-            else
+            catch (Exception ex)
             {
-                e.Cancel = true; // Cancel deletion if the user clicks 'No'
+                MessageBox.Show("Something went wrong.");
             }
         }
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow editedRow = dataGridView1.Rows[e.RowIndex];
-                DataRowView rowView = editedRow.DataBoundItem as DataRowView;
-
-                if (rowView != null)
+                if (e.RowIndex >= 0)
                 {
-                    DataRow editedDataRow = rowView.Row;
+                    DataGridViewRow editedRow = dataGridView1.Rows[e.RowIndex];
+                    DataRowView rowView = editedRow.DataBoundItem as DataRowView;
 
-                    using (SqlConnection con = new SqlConnection(databaseHelper.conString))
+                    if (rowView != null)
                     {
-                        con.Open();
-                        string updateQuery = "UPDATE studentOffenceRecord SET Lrn = @Lrn, Name = @Name, Year = @Year, Section = @Section, Date = @Date, Time = @Time, OffenceType = @DocumentType, Details = @Details WHERE Lrn = @OriginalLrn";
+                        DataRow editedDataRow = rowView.Row;
 
-                        SqlCommand cmd = new SqlCommand(updateQuery, con);
-                        cmd.Parameters.AddWithValue("@Lrn", editedDataRow["LRN"]);
-                        cmd.Parameters.AddWithValue("@Name", editedDataRow["Name"]);
-                        cmd.Parameters.AddWithValue("@Year", editedDataRow["Year"]);
-                        cmd.Parameters.AddWithValue("@Section", editedDataRow["Section"]);
-                        cmd.Parameters.AddWithValue("@Date", editedDataRow["Date"]);
-                        cmd.Parameters.AddWithValue("@Time", editedDataRow["Time"]);
-                        cmd.Parameters.AddWithValue("@DocumentType", editedDataRow["OffenceType"]);
-                        cmd.Parameters.AddWithValue("@Details", editedDataRow["Details"]);
-                        cmd.Parameters.AddWithValue("@OriginalLrn", editedDataRow["LRN", DataRowVersion.Original]);
+                        using (SqlConnection con = new SqlConnection(databaseHelper.conString))
+                        {
+                            con.Open();
+                            string updateQuery = "UPDATE studentOffenceRecord SET Lrn = @Lrn, Name = @Name, Year = @Year, Section = @Section, Date = @Date, Time = @Time, OffenceType = @DocumentType, Details = @Details WHERE Lrn = @OriginalLrn";
 
-                        cmd.ExecuteNonQuery();
+                            SqlCommand cmd = new SqlCommand(updateQuery, con);
+                            cmd.Parameters.AddWithValue("@Lrn", editedDataRow["LRN"]);
+                            cmd.Parameters.AddWithValue("@Name", editedDataRow["Name"]);
+                            cmd.Parameters.AddWithValue("@Year", editedDataRow["Year"]);
+                            cmd.Parameters.AddWithValue("@Section", editedDataRow["Section"]);
+                            cmd.Parameters.AddWithValue("@Date", editedDataRow["Date"]);
+                            cmd.Parameters.AddWithValue("@Time", editedDataRow["Time"]);
+                            cmd.Parameters.AddWithValue("@DocumentType", editedDataRow["OffenceType"]);
+                            cmd.Parameters.AddWithValue("@Details", editedDataRow["Details"]);
+                            cmd.Parameters.AddWithValue("@OriginalLrn", editedDataRow["LRN", DataRowVersion.Original]);
 
-                        MessageBox.Show("Successfully edited a data.");
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Successfully edited a data.");
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong.");
+                loadOffence();
+            }
+            
         }
 
         private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this row?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes && e.Row.Index >= 0)
+            try
             {
-                DataGridViewRow deletedRow = dataGridView1.Rows[e.Row.Index];
-                DataRowView rowView = deletedRow.DataBoundItem as DataRowView;
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this row?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (rowView != null)
+                if (result == DialogResult.Yes && e.Row.Index >= 0)
                 {
-                    DataRow deletedDataRow = rowView.Row;
+                    DataGridViewRow deletedRow = dataGridView1.Rows[e.Row.Index];
+                    DataRowView rowView = deletedRow.DataBoundItem as DataRowView;
 
-                    using (SqlConnection con = new SqlConnection(databaseHelper.conString))
+                    if (rowView != null)
                     {
-                        con.Open();
-                        string deleteQuery = "DELETE FROM studentOffenceRecord WHERE Lrn = @Lrn";
+                        DataRow deletedDataRow = rowView.Row;
 
-                        SqlCommand cmd = new SqlCommand(deleteQuery, con);
-                        cmd.Parameters.AddWithValue("@Lrn", deletedDataRow["LRN"]);
+                        using (SqlConnection con = new SqlConnection(databaseHelper.conString))
+                        {
+                            con.Open();
+                            string deleteQuery = "DELETE FROM studentOffenceRecord WHERE Lrn = @Lrn";
 
-                        cmd.ExecuteNonQuery();
+                            SqlCommand cmd = new SqlCommand(deleteQuery, con);
+                            cmd.Parameters.AddWithValue("@Lrn", deletedDataRow["LRN"]);
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
+                else
+                {
+                    e.Cancel = true; // Cancel deletion if the user clicks 'No'
+                }
             }
-            else
+            catch (Exception ex)
             {
-                e.Cancel = true; // Cancel deletion if the user clicks 'No'
+                MessageBox.Show("Something went wrong.");
+                loadDocument();
             }
+            
         }
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {

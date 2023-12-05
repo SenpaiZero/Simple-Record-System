@@ -28,3 +28,21 @@ C:\Users\Xeb\Desktop\Record_System\Record_System\obj\Debug\Record_System.exe
 C:\Users\Xeb\Desktop\Record_System\Record_System\obj\Debug\Record_System.pdb
 C:\Users\Xeb\Desktop\Record_System\Record_System\obj\Debug\Record_System.updateDocument.resources
 C:\Users\Xeb\Desktop\Record_System\Record_System\obj\Debug\Record_System.updateOffence.resources
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\bin\Debug\recordDB.mdf
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\bin\Debug\recordDB_log.ldf
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\bin\Debug\Record_System.exe.config
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\bin\Debug\Record_System.exe
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\bin\Debug\Record_System.pdb
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.csproj.AssemblyReference.cache
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.csproj.SuggestedBindingRedirects.cache
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.AddDocuRecord.resources
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.AddOffRecord.resources
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.Dashboard.resources
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.Form1.resources
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.Properties.Resources.resources
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.updateDocument.resources
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.updateOffence.resources
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.csproj.GenerateResource.cache
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.csproj.CoreCompileInputs.cache
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.exe
+C:\Users\Xeb\Desktop\Simple Record System\Record_System\Record_System\obj\Debug\Record_System.pdb

@@ -70,5 +70,11 @@ namespace Record_System
 
             }
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+            Application.Exit();
+        }
     }
 }
